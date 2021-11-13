@@ -1,3 +1,4 @@
+import os
 from flask import Flask, jsonify, abort, request, Response
 from sqlalchemy.exc import IntegrityError
 from flask_sqlalchemy import SQLAlchemy
@@ -8,7 +9,7 @@ BASE_DIR = Path(__file__).parent
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{BASE_DIR / 'test.db'}"
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') or f"sqlite:///{BASE_DIR / 'test.db'}"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
