@@ -1,0 +1,5 @@
+flask_venv/
+.idea/
+__pycache__/
+tmp/
+test.db
